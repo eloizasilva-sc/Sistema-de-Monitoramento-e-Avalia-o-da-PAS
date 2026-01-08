@@ -69,8 +69,34 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%););
-  pointer-events: none;
+: background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.login-wrapper::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  top: -150px;
+  right: -150px;
+  animation: pulse 8s ease-in-out infinite;
+}
+
+.login-wrapper::after {
+  content: '';
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.1) 0%, transparent 70%);
+  border-radius: 50%;
+  bottom: -100px;
+  left: -100px;
+  animation: pulse 10s ease-in-out infinite reverse;
+
 }
 .login-card {
   background: rgba(255,255,255,1);
@@ -3778,3 +3804,4 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
