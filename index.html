@@ -69,15 +69,14 @@ html, body {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(circle at 10% 20%, rgba(99,102,241,0.12), transparent 15%), radial-gradient(circle at 90% 80%, rgba(14,165,233,0.12), transparent 18%);
-  filter: blur(30px);
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%););
   pointer-events: none;
 }
 .login-card {
   background: rgba(255,255,255,1);
   -webkit-backdrop-filter: blur(6px);
   backdrop-filter: blur(6px);
-  box-shadow: 0 20px 60px rgba(2,6,23,0.45), 0 6px 18px rgba(37,99,235,0.15);
+  box-shadow: 0 20px 60px rgba(30, 37, 66, 0.45), 0 6px 18px rgba(27, 42, 71, 0.15);
 }
 /* Ensure form text and select options inside login card are dark (restore previous look) */
 .login-card, .login-card * {
@@ -253,7 +252,7 @@ html, body {
   max-width: 90vw;
   max-height: 90vh;
   overflow-y: auto;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 20px 60px rgba(7, 4, 58, 0.219);
   animation: slideUp 0.3s ease-out;
 }
 
@@ -483,7 +482,7 @@ html, body {
           ${quadrimestres.map(quad =&gt; { const prazo = prazosQuadrimestres[quad]; const status = calcularStatusPrazo(prazo); const liberado = liberacoesQuadrimestres[quad] || false; return ` 
           <div class="${prazo ? status.classe + ' border-2' : 'bg-slate-100 border-2 border-dashed border-slate-300'} rounded-lg p-4 transition">
            <div class="flex items-center justify-between mb-2"><span class="font-bold text-sm text-slate-900">${quad}</span>
-            <div class="flex gap-1"><button onclick="definirPrazoQuadrimestre('${quad}')" class="p-1 hover:bg-black/10 rounded transition" title="Gerenciar prazo e liberação"> <i data-lucide="${prazo ? 'edit-2' : 'calendar-plus'}" class="w-4 h-4 text-slate-900"></i> </button>
+            <div class="flex gap-1"><button onclick="definirPrazoQuadrimestre('${quad}')" class="p-1 hover:bg-black/10 rounded transition" title="Gerenciar prazo e liberação"> <i data-lucide="${prazo ? 'edit-2' : 'calendar-plus'}" class="w-4 h-4"></i> </button>
             </div>
            </div> ${prazo ? ` 
            <p class="text-xs font-semibold mb-1">${status.emoji} ${status.texto}</p>
@@ -1793,7 +1792,7 @@ function renderizarMonitoramento() {
           <button onclick="definirPrazoQuadrimestre('${quad}')" class="${prazo ? status.classe + ' border-2' : 'bg-slate-100 border-2 border-dashed border-slate-300 hover:bg-slate-200'} rounded-lg p-4 text-left transition">
             <div class="flex items-center justify-between mb-2">
               <span class="font-bold text-sm text-slate-900">${quad}</span>
-              <i data-lucide="${prazo ? 'edit-2' : 'calendar-plus'}" class="w-4 h-4 text-slate-900"></i>
+              <i data-lucide="${prazo ? 'edit-2' : 'calendar-plus'}" class="w-4 h-4"></i>
             </div>
             ${prazo ? `
               <p class="text-xs font-semibold mb-1">${status.emoji} ${status.texto}</p>
@@ -1932,7 +1931,7 @@ function definirPrazoQuadrimestre(quadrimestre) {
     <div class="modal-container w-full max-w-md p-6">
       <h3 class="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
         <i data-lucide="calendar-clock" class="w-6 h-6 text-blue-600"></i>
-        Gerenciar <span class="text-slate-900">${quadrimestre}</span>
+        Gerenciar ${quadrimestre}
       </h3>
       
       <form id="formDefinirPrazo" class="space-y-5">
