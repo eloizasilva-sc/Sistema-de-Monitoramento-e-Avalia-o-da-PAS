@@ -54,22 +54,41 @@ html, body {
   transition: transform 0.3s ease;
 }
 
-/* Login screen centering and background */
-#loginScreen {
+.sidebar.mobile-hidden {
+  transform: translateX(-100%);
+}
+
+@media (min-width: 1024px) {
+  .sidebar.mobile-hidden {
+    transform: translateX(0);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+.login-wrapper {
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  padding: 40px 20px;
-}
-
-/* decorative blurred overlay and card styling */
-.login-wrapper { position: relative; }
-.login-wrapper::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-: background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
+  width: 100%;
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%);
   position: relative;
   overflow: hidden;
 }
@@ -96,38 +115,78 @@ html, body {
   bottom: -100px;
   left: -100px;
   animation: pulse 10s ease-in-out infinite reverse;
+}
 
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
-.login-card {
-  background: rgba(255,255,255,1);
-  -webkit-backdrop-filter: blur(6px);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 20px 60px rgba(30, 37, 66, 0.45), 0 6px 18px rgba(27, 42, 71, 0.15);
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
 }
-/* Ensure form text and select options inside login card are dark (restore previous look) */
-.login-card, .login-card * {
-  color: inherit;
+
+.modal-container {
+  background: white;
+  border-radius: 16px;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
 }
-.login-card label,
-.login-card p,
-.login-card h1,
-.login-card h3 {
-  color: #0f172a !important;
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
 }
-.login-card input,
-.login-card textarea,
-.login-card .tab-btn {
-  color: #0f172a !important;
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
 }
-.login-card select {
-  background: #ffffff !important;
-  color: #0f172a !important;
-  -webkit-appearance: none !important;
-  appearance: none !important;
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
-.login-card select option {
-  background: #ffffff !important;
-  color: #0f172a !important;
+
+.mobile-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 40;
+}
+
+.mobile-overlay.active {
+  display: block;
+  animation: fadeIn 0.2s ease-out;
+
 }
 .login-card .tab-btn.text-slate-400 { color: #64748b !important; }
 
@@ -3804,4 +3863,5 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
