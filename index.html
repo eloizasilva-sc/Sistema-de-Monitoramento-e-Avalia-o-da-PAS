@@ -478,7 +478,7 @@ html, body {
         </div>
         <div id="areaDefinirPrazos" class="mt-6 pt-6 border-t-2 border-slate-200" style="display: none;">
          <h3 class="text-md font-bold text-slate-900 mb-3 flex items-center gap-2"><i data-lucide="calendar-clock" class="w-5 h-5 text-purple-600"></i> Gestão de Prazos e Liberação dos Quadrimestres</h3>
-         <p class="text-sm text-slate-600 mb-4">Defina os prazos de preenchimento e libere o acesso aos quadrimestres para técnicos e visualizadores</p>
+         <p class="text-sm text-slate-600 mb-4">Defina os prazos de preenchimento e libere o acesso aos quadrimestres para técnicos </p>
          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
           ${quadrimestres.map(quad =&gt; { const prazo = prazosQuadrimestres[quad]; const status = calcularStatusPrazo(prazo); const liberado = liberacoesQuadrimestres[quad] || false; return ` 
           <div class="${prazo ? status.classe + ' border-2' : 'bg-slate-100 border-2 border-dashed border-slate-300'} rounded-lg p-4 transition">
@@ -1959,7 +1959,7 @@ function definirPrazoQuadrimestre(quadrimestre) {
             <input type="checkbox" id="liberarQuadrimestre" ${liberadoAtual ? 'checked' : ''} class="w-5 h-5 text-green-600 rounded">
             <div class="flex-1">
               <p class="text-sm font-bold text-slate-900">Liberar visualização</p>
-              <p class="text-xs text-slate-600">Permite que técnicos e visualizadores vejam as ações deste quadrimestre</p>
+              <p class="text-xs text-slate-600">Permite que técnicos vejam as ações deste quadrimestre</p>
             </div>
           </label>
         </div>
@@ -3781,6 +3781,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
+
 
 
 
