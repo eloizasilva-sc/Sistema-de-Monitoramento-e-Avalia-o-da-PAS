@@ -1670,23 +1670,32 @@ document.getElementById('formNovaAcao').addEventListener('submit', (e) => {
     }
   } else {
     const novaAcao = {
-      id: Date.now().toString(),
-      titulo,
-      descricao,
-      indicador,
-      unidadeMedida,
-      valorProposto,
-      resultadoProposto,
-      responsavel,
-      areas: areasSelecionadas,
-      metaId: metaIdParaVincular || null,
-      progressos: [],
-      status: 'NAO_INICIADA',
-      dataCriacao: new Date().toISOString()
-    };
-    
-    console.log('Nova ação criada:', novaAcao);
-    acoes.push(novaAcao);
+ id: crypto.randomUUID(),
+ titulo,
+ descricao,
+ indicador,
+ unidadeMedida,
+ valorProposto,
+ resultadoProposto,
+ responsavel,
+ areas: areasSelecionadas,
+ metaId: metaIdParaVincular,
+ progressos: [],
+ status:'NAO_INICIADA',
+ dataCriacao: new Date().toISOString()
+};
+
+acoes.push(novaAcao);
+
+// força persistência
+salvarDados();
+
+// teste
+console.log("ACOES SALVAS:",acoes);
+console.log(
+JSON.parse(localStorage.getItem('bancoSistema'))
+);
+   
     
     registrarAuditoria('CRIAR_ACAO', `Nova ação "${titulo}" criada`);
   }
