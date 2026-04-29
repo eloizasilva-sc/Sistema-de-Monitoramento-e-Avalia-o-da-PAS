@@ -713,15 +713,24 @@ let acaoIdParaProgresso = null;
 let prazosQuadrimestres = JSON.parse(localStorage.getItem('prazosQuadrimestres')) || {};
 let liberacoesQuadrimestres = JSON.parse(localStorage.getItem('liberacoesQuadrimestres')) || {};
 
-function salvarDados() {
-  localStorage.setItem('usuarios', JSON.stringify(usuarios));
-  localStorage.setItem('acoes', JSON.stringify(acoes));
-  localStorage.setItem('areas', JSON.stringify(areas));
-  localStorage.setItem('quadrimestres', JSON.stringify(quadrimestres));
-  localStorage.setItem('auditoria', JSON.stringify(auditoria));
-  localStorage.setItem('metas', JSON.stringify(metas));
-  localStorage.setItem('prazosQuadrimestres', JSON.stringify(prazosQuadrimestres));
-  localStorage.setItem('liberacoesQuadrimestres', JSON.stringify(liberacoesQuadrimestres));
+function salvarDados(){
+
+const bancoSistema = {
+ usuarios,
+ acoes,
+ metas,
+ areas,
+ quadrimestres,
+ auditoria,
+ prazosQuadrimestres,
+ liberacoesQuadrimestres
+};
+
+localStorage.setItem(
+ 'bancoSistema',
+ JSON.stringify(bancoSistema)
+);
+
 }
 
 function registrarAuditoria(acao, detalhes) {
