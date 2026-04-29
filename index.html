@@ -715,23 +715,29 @@ let liberacoesQuadrimestres = JSON.parse(localStorage.getItem('liberacoesQuadrim
 
 function salvarDados(){
 
-const bancoSistema = {
- usuarios,
- acoes,
- metas,
- areas,
- quadrimestres,
- auditoria,
- prazosQuadrimestres,
- liberacoesQuadrimestres
-};
+const banco =
+JSON.parse(
+localStorage.getItem('bancoSistema')
+) || {};
 
-localStorage.setItem(
- 'bancoSistema',
- JSON.stringify(bancoSistema)
-);
+let usuarios = banco.usuarios || [];
+let acoes = banco.acoes || [];
+let metas = banco.metas || [];
+let areas = banco.areas || ['SAPS','SRAS','CERAE','SUP'];
 
-}
+let quadrimestres =
+banco.quadrimestres || [
+'1º Quadrimestre',
+'2º Quadrimestre',
+'3º Quadrimestre'
+];
+
+let auditoria = banco.auditoria || [];
+let prazosQuadrimestres =
+banco.prazosQuadrimestres || {};
+
+let liberacoesQuadrimestres =
+banco.liberacoesQuadrimestres || {};
 
 function registrarAuditoria(acao, detalhes) {
   if (!currentUser) return;
