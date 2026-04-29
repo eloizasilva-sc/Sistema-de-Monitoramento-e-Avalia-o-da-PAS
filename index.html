@@ -1669,21 +1669,30 @@ document.getElementById('formNovaAcao').addEventListener('submit', (e) => {
       registrarAuditoria('EDITAR_ACAO', `Ação "${titulo}" editada`);
     }
   } else {
-    const novaAcao = {
-      id: Date.now().toString(),
-      titulo,
-      descricao,
-      indicador,
-      unidadeMedida,
-      valorProposto,
-      resultadoProposto,
-      responsavel,
-      areas: areasSelecionadas,
-      metaId: metaIdParaVincular || null,
-      progressos: [],
-      status: 'NAO_INICIADA',
-      dataCriacao: new Date().toISOString()
-    };
+   const novaAcao = {
+ id: crypto.randomUUID(),
+ titulo,
+ descricao,
+ indicador,
+ unidadeMedida,
+ valorProposto,
+ resultadoProposto,
+ responsavel,
+ areas: areasSelecionadas,
+ metaId: metaIdParaVincular || null,
+ progressos: [],
+ status:'NAO_INICIADA',
+ dataCriacao: new Date().toISOString()
+};
+
+acoes.push(novaAcao);
+
+salvarDados(); // AQUI
+
+registrarAuditoria(
+'CRIAR_ACAO',
+`Nova ação "${titulo}" criada`
+);
     
     console.log('Nova ação criada:', novaAcao);
     acoes.push(novaAcao);
