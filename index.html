@@ -451,9 +451,7 @@ html, body {
        </div>
        <div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm">
         <h3 class="text-lg font-bold text-slate-900 mb-6 flex items-center gap-2"><i data-lucide="building-2" class="w-5 h-5 text-blue-600"></i> Distribuição por Área Técnica</h3>
-        <div onclick="irParaArea('${area}')"
-class="bg-white rounded-xl border p-6 cursor-pointer hover:shadow-xl hover:scale-105 transition"
->
+        <div id="areaCardsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"></div>
        </div>
       </div><!-- SEÇÃO CADASTRO -->
       <div id="secaoCadastro" class="secao-conteudo" style="display: none;">
@@ -657,7 +655,7 @@ class="bg-white rounded-xl border p-6 cursor-pointer hover:shadow-xl hover:scale
          </div>
          <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
           <p class="text-xs font-bold text-blue-700 mb-2">🎯 % PROPOSTO</p>
-          <p id="metaPercentualPropostoMonitoramento">-</p>" class="text-2xl font-black text-blue-900">-</p>
+          <p id="metaPercentualProposto" class="text-2xl font-black text-blue-900">-</p>
          </div>
         </div>
        </div>
@@ -3789,21 +3787,9 @@ function exportarPDF() {
 document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
 });
-    function irParaArea(area){
-
-filtroAreaCadastro = area;
-filtroAreaMonitoramento = area;
-filtroAreaAtivo = area;
-
-mostrarSecao('cadastro');
-
-renderizarMetasAcoes();
-
-}
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
 
 
 
