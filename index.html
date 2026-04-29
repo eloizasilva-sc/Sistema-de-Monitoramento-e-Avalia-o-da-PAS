@@ -715,29 +715,23 @@ let liberacoesQuadrimestres = JSON.parse(localStorage.getItem('liberacoesQuadrim
 
 function salvarDados(){
 
-const banco =
-JSON.parse(
-localStorage.getItem('bancoSistema')
-) || {};
+const bancoSistema = {
+ usuarios,
+ acoes,
+ metas,
+ areas,
+ quadrimestres,
+ auditoria,
+ prazosQuadrimestres,
+ liberacoesQuadrimestres
+};
 
-let usuarios = banco.usuarios || [];
-let acoes = banco.acoes || [];
-let metas = banco.metas || [];
-let areas = banco.areas || ['SAPS','SRAS','CERAE','SUP'];
+localStorage.setItem(
+ 'bancoSistema',
+ JSON.stringify(bancoSistema)
+);
 
-let quadrimestres =
-banco.quadrimestres || [
-'1º Quadrimestre',
-'2º Quadrimestre',
-'3º Quadrimestre'
-];
-
-let auditoria = banco.auditoria || [];
-let prazosQuadrimestres =
-banco.prazosQuadrimestres || {};
-
-let liberacoesQuadrimestres =
-banco.liberacoesQuadrimestres || {};
+}
 
 function registrarAuditoria(acao, detalhes) {
   if (!currentUser) return;
@@ -1675,30 +1669,21 @@ document.getElementById('formNovaAcao').addEventListener('submit', (e) => {
       registrarAuditoria('EDITAR_ACAO', `Ação "${titulo}" editada`);
     }
   } else {
-   const novaAcao = {
- id: crypto.randomUUID(),
- titulo,
- descricao,
- indicador,
- unidadeMedida,
- valorProposto,
- resultadoProposto,
- responsavel,
- areas: areasSelecionadas,
- metaId: metaIdParaVincular || null,
- progressos: [],
- status:'NAO_INICIADA',
- dataCriacao: new Date().toISOString()
-};
-
-acoes.push(novaAcao);
-
-salvarDados(); // AQUI
-
-registrarAuditoria(
-'CRIAR_ACAO',
-`Nova ação "${titulo}" criada`
-);
+    const novaAcao = {
+      id: Date.now().toString(),
+      titulo,
+      descricao,
+      indicador,
+      unidadeMedida,
+      valorProposto,
+      resultadoProposto,
+      responsavel,
+      areas: areasSelecionadas,
+      metaId: metaIdParaVincular || null,
+      progressos: [],
+      status: 'NAO_INICIADA',
+      dataCriacao: new Date().toISOString()
+    };
     
     console.log('Nova ação criada:', novaAcao);
     acoes.push(novaAcao);
@@ -3805,7 +3790,6 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
-
 
 
 
