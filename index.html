@@ -695,23 +695,30 @@ function initLucideIcons() {
 }
 
 // STATE MANAGEMENT
-let currentUser = null;
-let usuarios = JSON.parse(localStorage.getItem('usuarios')) || [
-  { id: '1', nome: 'Administrador do Sistema', email: 'admin.admin', senha: 'admin.admin', nivel: 'ADMIN', area: '', autorizado: true, dataCriacao: new Date().toISOString() }
+const banco = JSON.parse(
+localStorage.getItem('bancoSistema')
+) || {};
+
+let usuarios = banco.usuarios || [
+ { id:'1', nome:'Administrador do Sistema',
+ email:'admin.admin',
+ senha:'admin.admin',
+ nivel:'ADMIN',
+ autorizado:true}
 ];
-let acoes = JSON.parse(localStorage.getItem('acoes')) || [];
-let areas = JSON.parse(localStorage.getItem('areas')) || ['SAPS', 'SRAS', 'CERAE', 'SUP'];
-let quadrimestres = JSON.parse(localStorage.getItem('quadrimestres')) || ['1º Quadrimestre', '2º Quadrimestre', '3º Quadrimestre'];
-let auditoria = JSON.parse(localStorage.getItem('auditoria')) || [];
-let metas = JSON.parse(localStorage.getItem('metas')) || [];
-let filtroAreaAtivo = 'TODAS';
-let filtroAreaMonitoramento = 'TODAS';
-let filtroQuadrimestreMonitoramento = 'TODOS';
-let filtroAreaCadastro = 'TODAS';
-let metaIdParaVincular = null;
-let acaoIdParaProgresso = null;
-let prazosQuadrimestres = JSON.parse(localStorage.getItem('prazosQuadrimestres')) || {};
-let liberacoesQuadrimestres = JSON.parse(localStorage.getItem('liberacoesQuadrimestres')) || {};
+
+let acoes = banco.acoes || [];
+let metas = banco.metas || [];
+let areas = banco.areas || ['SAPS','SRAS','CERAE','SUP'];
+let quadrimestres = banco.quadrimestres || [
+'1º Quadrimestre',
+'2º Quadrimestre',
+'3º Quadrimestre'
+];
+
+let auditoria = banco.auditoria || [];
+let prazosQuadrimestres = banco.prazosQuadrimestres || {};
+let liberacoesQuadrimestres = banco.liberacoesQuadrimestres || {};
 
 function salvarDados(){
 
