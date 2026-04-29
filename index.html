@@ -1224,7 +1224,8 @@ function renderizarCardsAreas() {
     const cor = cores[areasVisiveis.indexOf(area) % cores.length];
     
     html += `
-      <div class="bg-white border-2 border-slate-200 rounded-xl p-5 hover:shadow-lg transition">
+      <div onclick="irParaMonitoramentoArea('${area}')"
+class="bg-white border-2 border-slate-200 rounded-xl p-5 hover:shadow-lg hover:scale-105 transition cursor-pointer">
         <div class="flex items-center justify-between mb-3">
           <div class="w-10 h-10 bg-${cor}-100 rounded-lg flex items-center justify-center">
             <i data-lucide="building-2" class="w-5 h-5 text-${cor}-600"></i>
@@ -3797,6 +3798,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initLucideIcons();
 });
 </script>
+   function irParaMonitoramentoArea(area){filtroAreaMonitoramento = area; mostrarSecao('monitoramento'); renderizarMonitoramento();
+
+}
  <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9bad9f71c226c5ea',t:'MTc2Nzg5NTUyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
 
